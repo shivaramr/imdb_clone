@@ -1,0 +1,140 @@
+.main {
+  background-color: #121212;
+  padding: 4px 0px;
+  color: #fff;
+
+  .body {
+    padding: 0px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media (min-width: 1285px) {
+      padding: 0px 100px;
+    }
+
+    @media (max-width: 1285px) {
+      gap: 4px;
+    }
+
+    .menuBase {
+      display: flex;
+      align-items: center;
+      height: 48px;
+      font-size: 32px;
+      cursor: pointer;
+      padding: 0px 12px;
+      transition: background-color 0.5s;
+      border-radius: 24px;
+
+      &:hover {
+        background-color: #232323;
+      }
+    }
+
+    .menuIcon {
+      font-size: 32px;
+    }
+
+    .logoBtn {
+      background-color: #eec017;
+      margin: 8px 0px;
+      padding: 8px 0px;
+      border: none;
+      outline: none;
+      border-radius: 12px;
+      height: 44px;
+      width: 84px;
+      font-size: x-large;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+
+      &:hover {
+        opacity: 0.95;
+      }
+    }
+
+    .line {
+      height: 32px;
+      border: 1px solid;
+      color: #3f3f3f;
+    }
+
+    .menuLabel {
+      font-size: 18px;
+    }
+
+    .useAppBtn {
+      display: none;
+      background-color: #eec017;
+      margin: 8px 0px;
+      padding: 8px 0px;
+      border: none;
+      outline: none;
+      border-radius: 24px;
+      height: 52px;
+      width: 84px;
+      font-size: medium;
+      font-weight: 700;
+      cursor: pointer;
+
+      @media (max-width: 1024px) {
+        display: block;
+      }
+    }
+  }
+}
+
+.searchFieldMain {
+  background-color: #fff;
+  color: #000;
+  margin: 0px 8px;
+  height: 44px;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+
+  @media (max-width: 1470px) {
+    width: 70%;
+  }
+  @media (max-width: 1024px) {
+    width: 60%;
+  }
+  @media (max-width: 902px) {
+    width: 50%;
+  }
+  @media (max-width: 748px) {
+    width: 42%;
+  }
+  @media (max-width: 648px) {
+    width: 30%;
+  }
+}
+
+.searchFieldMain input {
+  height: 100%;
+  width: 100%;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  padding: 8px;
+
+  /* padding-right: 40px; 
+  background: url('https://cdn-icons-png.flaticon.com/16/149/149852.png') no-repeat;
+  background-position: right 10px center; 
+  background-size: 16px; */
+}
+
+.searchButton{
+  margin: 0px 8px;
+  border: none;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+}

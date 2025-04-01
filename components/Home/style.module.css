@@ -1,0 +1,91 @@
+.main {
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.carousel {
+  display: flex;
+  flex-grow: 1; /* Takes all remaining space */
+  min-width: 0; /* Prevents it from pushing .menu */
+  overflow: hidden;
+  text-align: center;
+}
+
+.menu {
+  display: flex;
+  color: #000;
+  flex-direction: column;
+  gap: 4px;
+  padding: 4px;
+  max-height: 400px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  flex-grow: 0; /* Prevents it from growing */
+  flex-shrink: 0; /* Prevents shrinking */
+  width: auto; /* Adjusts to content width */
+  min-width: fit-content; /* Ensures it wraps around content */
+
+  @media (max-width: 1240px) {
+    display: none;
+  }
+}
+
+.movieCardMain {
+  background-color: #1a1a1a;
+  color: #fff;
+  height: 130px !important;
+  width: auto; /* Allows it to grow */
+  min-width: 350px; /* Ensures it doesn’t shrink below this */
+  max-width: 500px; /* Optional limit */
+  flex-grow: 1; /* Ensures it expands */
+  border-radius: 24px;
+  padding: 18px;
+  flex-shrink: 0;
+  display: flex;
+  gap: 8px;
+  cursor: pointer;
+
+  .desc {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+  }
+}
+
+.bodyMain h1 {
+  /* color: red; */
+}
+
+.bodyTitle {
+  display: flex;
+  align-items: center;
+
+  .line {
+    height: 32px;
+    border: 1px solid;
+    color: #f5c518;
+    margin-right: 8px;
+  }
+}
+
+.posterRow {
+  display: grid;
+  /* justify-content: space-between; */
+  justify-content: center;
+  padding: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 2fr));
+  gap: 12px;
+}
+
+.circleImage {
+  border-radius: 50%;
+  opacity: 0.75;
+  margin: auto;
+  cursor: pointer;
+  
+  &:hover {
+    opacity: 1;
+  }
+}

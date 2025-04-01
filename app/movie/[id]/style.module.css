@@ -1,0 +1,51 @@
+.moviePageMain {
+  padding: 20px 12px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+
+  @media (min-width: 1285px) {
+    padding: 80px 100px;
+  }
+
+  @media (max-width: 880px) {
+    grid-template-columns: repeat(auto-fit, minmax(100%, 2fr));
+    justify-items: center;
+    gap: 16px;
+  }
+}
+
+.moviePageMain img{
+  width: auto;
+}
+
+.moviePageMain h1 {
+  font-size: xxx-large;
+
+  &::first-letter {
+    color: #eec017;
+  }
+}
+
+.moviePageMain p {
+  font-size: large;
+  margin: 8px;
+}
+
+.moviePageMain p span {
+  font-weight: 600;
+  font-size: larger;
+}
+
+.actions {
+  display: flex;
+  font-size: 32px;
+  justify-content: flex-end;
+}
+
+.actions svg{
+  /* border: 1px solid;
+  border-radius: 50%; */
+  padding: 4px;
+  margin: 4px;
+  cursor: pointer;
+}
