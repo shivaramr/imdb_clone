@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextResponse } from "next/server";
 import dbConnect from "@/lib/utils/dbConnect";
 import Movie from "@/lib/models/Movie";
@@ -54,41 +53,4 @@ export async function POST(req: Request) {
   }
 
   return NextResponse.json(newMovie, { status: 200 });
-}
-
-export async function DELETE(req: Request) {
-  await dbConnect();
-
-  // Extract the movie ID from the request URL
-  const url = new URL(req.url); // Use the URL constructor to parse the URL
-  const id = url.pathname.split('/').pop(); // Extract the ID from the URL path
-  
-  if (!id) {
-    return NextResponse.json({ error: 'Movie ID is required' }, { status: 400 });
-  }
-  
-  // Find the movie by its ID
-  const movieToDelete = await Movie.findById(id).populate('producer').populate('actors');
-
-  if (!movieToDelete) {
-    return NextResponse.json({ error: 'Movie not found' }, { status: 404 });
-  }
-
-  // Remove the movie ID from the producer's movie list
-  const producer = movieToDelete.producer;
-  if (producer) {
-    producer.movies = producer.movies.filter((movieId: any) => movieId.toString() !== id);
-    await producer.save();
-  }
-
-  // Remove the movie ID from each actor's movie list
-  for (const actor of movieToDelete.actors) {
-    actor.movies = actor.movies.filter((movieId: any) => movieId.toString() !== id);
-    await actor.save();
-  }
-
-  // Delete the movie
-  await movieToDelete.remove();
-
-  return NextResponse.json({ message: 'Movie deleted successfully' }, { status: 200 });
 }
