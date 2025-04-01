@@ -8,17 +8,17 @@ import Movie from "@/lib/models/Movie";
 export async function DELETE(req: Request, { params }: { params: { id: string } }) {
   await dbConnect();
 
-  const { id } = await params; 
+  const { id } = await params;
 
   if (!id) {
-    return NextResponse.json({ error: 'Movie ID is required' }, { status: 400 });
+    return NextResponse.json({ error: "Movie ID is required" }, { status: 400 });
   }
 
   // Find the movie by its ID and populate related fields
-  const movieToDelete = await Movie.findById(id).populate('producer').populate('actors');
+  const movieToDelete = await Movie.findById(id).populate("producer").populate("actors");
 
   if (!movieToDelete) {
-    return NextResponse.json({ error: 'Movie not found' }, { status: 404 });
+    return NextResponse.json({ error: "Movie not found" }, { status: 404 });
   }
 
   // Remove the movie ID from the producer's movie list
@@ -37,5 +37,5 @@ export async function DELETE(req: Request, { params }: { params: { id: string } 
   // Delete the movie using findByIdAndDelete
   await Movie.findByIdAndDelete(id);
 
-  return NextResponse.json({ message: 'Movie deleted successfully' }, { status: 200 });
+  return NextResponse.json({ message: "Movie deleted successfully" }, { status: 200 });
 }
