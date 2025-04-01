@@ -4,10 +4,11 @@ import Movie from "@/lib/models/Movie";
 import Actor from "@/lib/models/Actor";
 import Producer from "@/lib/models/Producer";
 
-export async function DELETE(req: NextRequest, context: { params: { id: string } }) {
+export async function DELETE(req: NextRequest) {
   await dbConnect();
-  
-  const id = context.params.id; // ✅ Correctly access params
+
+  const url = new URL(req.url); // ✅ Parse the URL
+  const id = url.pathname.split("/").pop(); // ✅ Extract the last segment as the movie ID
 
   if (!id) {
     return NextResponse.json({ error: "Movie ID is required" }, { status: 400 });
