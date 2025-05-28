@@ -7,18 +7,9 @@ import { confirmAlert } from "react-confirm-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { MdOutlineEdit, MdDelete } from "react-icons/md";
 import { AppDispatch, RootState } from "@/lib/store/store";
-import { deleteMovie, fetchMovies } from "@/lib/store/slices/movieSlice";
+import { deleteMovie, fetchMovies } from "@/lib/store/slices/movies/middleware";
+import { dummyMovie, getConfirmAlertProps } from "./utils";
 import styles from "./style.module.css";
-
-const dummyMovie = {
-  poster: null as unknown as string,
-  _id: "",
-  name: "",
-  plot: "",
-  year: "",
-  producer: { name: "" },
-  actors: [],
-};
 
 const MoviePage2 = ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = use(params);
@@ -43,21 +34,8 @@ const MoviePage2 = ({ params }: { params: Promise<{ id: string }> }) => {
   }, [dispatch, movie?._id, router]);
 
   const handleDelete = useCallback(() => {
-    confirmAlert({
-      title: `Delete ${movie?.name}`,
-      message: "Are you sure you want to delete this?",
-      buttons: [
-        {
-          label: "Yes",
-          onClick: () => handleClickDelete(),
-        },
-        {
-          label: "No",
-        },
-      ],
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, movie?._id, router, movie?.name]);
+    confirmAlert(getConfirmAlertProps({ movie, handleClickDelete }));
+  }, [movie, handleClickDelete]);
 
   return (
     <div className={styles.moviePageMain}>

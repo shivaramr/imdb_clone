@@ -4,8 +4,8 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import Body from "@/components/Home/Body";
 import Header from "@/components/Home/Header";
-import { fetchMovies } from "@/lib/store/slices/movieSlice";
 import { AppDispatch } from "@/lib/store/store";
+import { fetchMovies } from "@/lib/store/slices/movies/middleware";
 import styles from "./page.module.css";
 
 export default function Home() {
